@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-tw">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格相關</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="/css/personnalCSS.css">
+    <style>
+        /* ==========================================================================
+           ERP 後台風格自訂 CSS
+           ========================================================================== */
+        :root {
+            --erp-primary: #2c3e50;      /* ERP 主色：深藍灰 */
+            --erp-secondary: #7f8c8d;    /* ERP 次色：冷灰 */
+            --erp-bg-light: #f8f9fa;     /* 輕量背景 */
+            --erp-border: #e2e8f0;       /* 細緻邊框 */
+            --erp-accent: #3498db;       /* 提示焦點色 */
+            --erp-text: #334155;         /* 主要文字 */
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--erp-text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        /* 覆蓋並優化表格樣式 */
+        .table-rwd {
+            background-color: #ffffff;
+            border-collapse: separate !important;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--erp-border) !important;
+        }
+
+        /* 標題樣式調整 */
+        caption {
+            caption-side: top !important;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--erp-primary);
+            padding: 12px 4px;
+            letter-spacing: 0.5px;
+        }
+
+        /* 覆蓋原 Bootstrap 強烈背景色 (如 table-dark, table-primary) 轉為 ERP 內斂風格 */
+        .table-rwd thead.table-dark,
+        .table-rwd thead tr.table-primary {
+            background-color: var(--erp-primary) !important;
+            color: #ffffff !important;
+        }
+
+        .table-rwd th {
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            padding: 14px 16px !important;
+            border-bottom: 2px solid var(--erp-primary) !important;
+            border-top: none !important;
+        }
+
+        /* 處理原本寫在 th 上的單獨色彩 class 覆蓋 */
+        .table-rwd th.table-danger {
+            background-color: #34495e !important; 
+            color: #ffffff !important;
+            text-align: center;
+            width: 80px;
+        }
+
+        /* 資料列樣式 */
+        .table-rwd tbody tr {
+            transition: background-color 0.2s ease;
+        }
+
+        /* 覆蓋第一筆資料的 bg-primary 強制背景 */
+        .table-rwd tbody tr.bg-primary {
+            background-color: #ffffff !important;
+            color: var(--erp-text) !important;
+        }
+
+        .table-rwd tbody tr td {
+            padding: 12px 16px !important;
+            vertical-align: middle;
+            border-color: var(--erp-border) !important;
+            color: var(--erp-text);
+        }
+
+        /* 處理第一列項目欄位的 bg-danger 與特殊樣式 */
+        .table-rwd tbody tr td.bg-danger {
+            background-color: var(--erp-bg-light) !important;
+            color: var(--erp-secondary) !important;
+            font-weight: bold;
+        }
+
+        .table-rwd tbody tr td:first-child {
+            text-align: center;
+            background-color: var(--erp-bg-light);
+            font-weight: 600;
+            color: #64748b;
+        }
+
+        /* 靠右對齊數量與價格，更符合 ERP 帳務邏輯 */
+        .table-rwd td:nth-child(4), 
+        .table-rwd td:nth-child(5) {
+            text-align: right;
+        }
+
+        /* 斑馬紋與懸停效果優化 */
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: var(--erp-bg-light) !important;
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: #f1f5f9 !important;
+        }
+
+        /* ==========================================================================
+           RWD 斷點優化 (手機板卡片化)
+           ========================================================================== */
+        @media screen and (max-width: 768px) {
+            .table-rwd {
+                border: none !important;
+                box-shadow: none;
+                background-color: transparent;
+            }
+
+            .table-rwd thead, caption {
+                display: none !important;
+            }
+
+            .table-rwd tbody tr,
+            .table-rwd tbody tr.bg-primary {
+                display: block !important;
+                margin-top: 16px;
+                background-color: #ffffff !important;
+                border: 1px solid var(--erp-border) !important;
+                border-radius: 8px !important;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+                padding: 8px 0;
+            }
+
+            .table-rwd tbody tr td,
+            .table-rwd tbody tr td.bg-danger {
+                display: flex !important;
+                align-items: center;
+                overflow: hidden;
+                border: none !important;
+                border-bottom: 1px dashed #f1f5f9 !important;
+                padding: 10px 16px !important;
+                background-color: transparent !important;
+                text-align: left !important;
+            }
+
+            .table-rwd tbody tr td:last-child {
+                border-bottom: none !important;
+            }
+
+            /* 項目與內文靠左對齊，並優化手機排版 */
+            .table-rwd tbody tr td::before {
+                content: attr(data-th);
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                color: #94a3b8 !important;
+                display: inline-block !important;
+                float: none !important;
+                width: 30% !important;
+                text-align: left !important;
+            }
+
+            .table-rwd tbody tr td span {
+                display: inline-block !important;
+                float: none !important;
+                width: 70% !important;
+                color: var(--erp-text) !important;
+                font-size: 15px;
+            }
+            
+            /* 手機版價格與數量取消靠右，維持整齊橫排 */
+            .table-rwd td:nth-child(4), 
+            .table-rwd td:nth-child(5) {
+                text-align: left !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table mt-3 table-bordered table-hover table-striped table-rwd">
+            <caption>表1.產品列表 (ERP 系統庫存盤點表)</caption>
+            <thead class="table-dark">
+                <tr class="table-primary">
+                    <th class="table-danger">項目</th>
+                    <th>品名</th>
+                    <th>型號</th>
+                    <th>價格</th>
+                    <th>數量</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- 001 -->
+                <tr class="bg-primary">
+                    <td data-th="項目" class="bg-danger"><span>001</span></td>
+                    <td data-th="品名"><span>ROG Strix RTX 4090 顯示卡</span></td>
+                    <td data-th="型號"><span>ROG-STRIX-RTX4090-O24G</span></td>
+                    <td data-th="價格"><span>62,990</span></td>
+                    <td data-th="數量"><span>15</span></td>
+                </tr>
+                <!-- 002 -->
+                <tr>
+                    <td data-th="項目">002</td>
+                    <td data-th="品名">Intel Core i9-14900K 處理器</td>
+                    <td data-th="型號">BX8071514900K</td>
+                    <td data-th="價格">19,800</td>
+                    <td data-th="數量">42</td>
+                </tr>
+                <!-- 003 -->
+                <tr>
+                    <td data-th="項目">003</td>
+                    <td data-th="品名">SAMSUNG 990 PRO 2TB NVMe SSD</td>
+                    <td data-th="型號">MZ-V9P2T0BW</td>
+                    <td data-th="價格">5,699</td>
+                    <td data-th="數量">120</td>
+                </tr>
+                <!-- 004 -->
+                <tr>
+                    <td data-th="項目">004</td>
+                    <td data-th="品名">Logitech G Pro X Superlight 2 無線滑鼠</td>
+                    <td data-th="型號">G-PPD-004BWL-BK</td>
+                    <td data-th="價格">5,490</td>
+                    <td data-th="數量">85</td>
+                </tr>
+                <!-- 005 -->
+                <tr>
+                    <td data-th="項目">005</td>
+                    <td data-th="品名">ASUS ROG Azoth 75% 機械式鍵盤</td>
+                    <td data-th="型號">ROG-AZOTH-NX-RD</td>
+                    <td data-th="價格">7,490</td>
+                    <td data-th="數量">30</td>
+                </tr>
+                <!-- 006 -->
+                <tr>
+                    <td data-th="項目">006</td>
+                    <td data-th="品名">Corsair Dominator Titanium DDR5 64GB 記憶體</td>
+                    <td data-th="型號">CMP64GX5M2B6000C30</td>
+                    <td data-th="價格">8,999</td>
+                    <td data-th="數量">25</td>
+                </tr>
+                <!-- 007 -->
+                <tr>
+                    <td data-th="項目">007</td>
+                    <td data-th="品名">MSI MAG A850GL 850W 電源供應器</td>
+                    <td data-th="型號">MAG-A850GL</td>
+                    <td data-th="價格">3,790</td>
+                    <td data-th="數量">60</td>
+                </tr>
+                <!-- 008 -->
+                <tr>
+                    <td data-th="項目">008</td>
+                    <td data-th="品名">NZXT Kraken Elite 360 RGB 一體式水冷</td>
+                    <td data-th="型號">RL-KR36E-B1</td>
+                    <td data-th="價格">9,390</td>
+                    <td data-th="數量">18</td>
+                </tr>
+                <!-- 009 -->
+                <tr>
+                    <td data-th="項目">009</td>
+                    <td data-th="品名">BenQ Mobiuz EX3210U 4K 電競螢幕</td>
+                    <td data-th="型號">EX3210U-T</td>
+                    <td data-th="價格">24,900</td>
+                    <td data-th="數量">14</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>

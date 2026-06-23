@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>時間軸(歷史概要)排版練習</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/personalAICSS.css">
+    <style>
+        .imgbox {
+            height: 220px;
+        }
+        /* 時間軸的線 */
+        .timeline-section{
+            position: relative;
+        }
+        .timeline-section::before{
+            position: absolute;
+            content: "";
+            top:5px;
+            bottom: 0;
+            width: 2px;
+            background-color: black;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        /* 時間軸的點 */
+        .timeline-section-pointer{
+            position: relative;
+        }
+        .timeline-section-pointer::before{
+            position: absolute;
+            content: "";
+            width: 20px;
+            height: 20px;
+            background-color:white;
+            top: 0;
+            border-radius: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 5px solid black;
+        }
+        /* 螢幕小於768px時不顯示 */
+        @media (max-width:768px) {
+            .timeline-section::before, .timeline-section-pointer::before{
+                display: none;
+           }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container py-3">
+        <div class="display-2 text-center fw-900 text-primary my-4">公司沿革</div>
+        <div class="timeline-section">
+            <div class="row align-item-center timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="imgbox bg-cover" style="background-image: url(/images/workspace.jpg);"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="textbox">
+                        <div class="h2">1.草創</div>
+                        <p>應該休閒可惜就會東西，所以超級傷害本書培訓，次數註冊時間相。</p>
+                        <p>配套隨時相對鍵盤淡淡重點鄉民自從手段微微選擇深深眼裡，組織業務預期代表有很多範圍會在她的本頁大量大量出口智能，走了動作可能一生重視類型打算特徵，人家並且策略一。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-item-center flex-xl-row-reverse mt-4 timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="imgbox bg-cover" style="background-image: url(/images/core.jpg);"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="textbox">
+                        <div class="h2">2.核心</div>
+                        <p>應該休閒可惜就會東西，所以超級傷害本書培訓，次數註冊時間相。</p>
+                        <p>配套隨時相對鍵盤淡淡重點鄉民自從手段微微選擇深深眼裡，組織業務預期代表有很多範圍會在她的本頁大量大量出口智能，走了動作可能一生重視類型打算特徵，人家並且策略一。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-item-center mt-4 timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="imgbox bg-cover" style="background-image: url(/images/R&D.jpg);"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="textbox">
+                        <div class="h2">3.研發</div>
+                        <p>應該休閒可惜就會東西，所以超級傷害本書培訓，次數註冊時間相。</p>
+                        <p>配套隨時相對鍵盤淡淡重點鄉民自從手段微微選擇深深眼裡，組織業務預期代表有很多範圍會在她的本頁大量大量出口智能，走了動作可能一生重視類型打算特徵，人家並且策略一。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-item-center flex-xl-row-reverse mt-4 timeline-section-pointer">
+                <div class="col-md-6 mt-3">
+                    <div class="imgbox bg-cover" style="background-image: url(/images/manufacture.jpg);"></div>
+                </div>
+                <div class="col-md-6 mt-3">
+                    <div class="textbox">
+                        <div class="h2">4.生產</div>
+                        <p>應該休閒可惜就會東西，所以超級傷害本書培訓，次數註冊時間相。</p>
+                        <p>配套隨時相對鍵盤淡淡重點鄉民自從手段微微選擇深深眼裡，組織業務預期代表有很多範圍會在她的本頁大量大量出口智能，走了動作可能一生重視類型打算特徵，人家並且策略一。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
