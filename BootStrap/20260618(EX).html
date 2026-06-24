@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>斷點切版+hover練習</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+    <style>
+        .header{
+            height: 160px;
+            background-image: url(/images/aoiike.jpg);
+            background-position: center;
+            background-size: cover;
+        }
+        .box {
+            height: 100px;
+            margin: 5px;
+            text-align: center;
+            font-size: 45px;
+            line-height: 100px;
+            font-weight: 500;
+        }
+        @media screen and (min-width: 768px) {
+            .box{
+                height: 200px;
+                line-height: 200px;
+            }
+        }
+        @media screen and (min-width: 992px){
+            .box{
+                width: 200px;
+                border-radius: 50%;
+            }
+        }
+        @media screen and (min-width: 1200px){
+            .box{
+                height: 220px;
+                width: 220px;
+                line-height: 220px;
+                border-radius: 50%;
+            }
+        }
+        .box01{
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5%;
+            box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 d-none d-sm-block">
+                <div class="header"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="box bg-info">選單01</div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="box bg-info">選單02</div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="box bg-info">選單03</div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="box bg-info">選單04</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-t">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點001</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-b">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點002</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-l">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點003</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-r">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點004</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-t">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點005</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+            <div class="box01 text-center col-12 col-md-6 col-lg-4">
+                <div class="bg-success roller-t">
+                    <div class="roller_box"><button class="btn btn-secondary">查看詳情</button></div>
+                    <img src="../images/furano01.jpg" class="img-fluid" alt="">
+                    <div class="h2">旅遊景點006</div>
+                    <p>程式成立這位你沒有思維，一般保存，動態。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

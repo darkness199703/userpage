@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用OpenData(台灣農村美食小吃)串接</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+</head>
+
+<body>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script>
+    //主程式
+        // $(function () {
+        //     //console.log : print
+        //     console.log("Hello World!");
+
+        //     //變數 const不能修改(路徑、權限)、let可以修改
+        //     const username = '阿明';
+        //     console.log(username);
+
+        //     let nickname = '小明';
+        //     console.log(nickname);
+        //     nickname = '大明';
+        //     console.log(nickname);
+
+        //     //foreach : for迴圈,用來讀取資料
+        //     const shop = [
+        //         {
+        //             "name": "漢堡王",
+        //             "City": "高雄市",
+        //             "Tel": "0905-169-176",
+        //             "Town": "  中區  ",
+        //             "Email": "angelgardenfarm@gmail.com"
+        //         },
+        //         {
+        //             "name": "麥當勞",
+        //             "City": "臺中市",
+        //             "Tel": "0905-169-176",
+        //             "Town": null,
+        //             "Email": undefined
+        //         },
+        //         {
+        //             "name": "肯德基",
+        //             "City": "臺北市",
+        //             "Tel": "0905-169-176",
+        //             "Town": "",
+        //             "Email": ""
+        //         },
+        //         {
+        //             "name": "丹丹",
+        //             "City": "台南市",
+        //             "Tel": "0905-169-176",
+        //             "Town": undefined,
+        //             "Email": null
+        //         }
+        //     ]
+
+        //     shop.forEach(function (item, index) {
+        //         //if判斷式
+        //         if (item.name == "肯德基") {
+        //             console.log(item);
+        //             console.log(item.City);
+        //             //輸出變數+字串 : ""+  或是 `${}`
+        //             console.log(index + ":店名" + item.name + "，所在地為" + item.City);
+        //             console.log(`${index}:店名${item.name}，所在地為${item.City}`);
+        //         }
+        //     });
+
+        //     //map : 重新整理資料
+        //     const Name = shop.map(function(item){
+        //         return item.name
+        //     });
+        //     console.log("舊資料:",shop);
+        //     console.log(`新資料:${Name}`);
+
+        //     //map : 重構資料欄位，更改欄位名稱及新增欄位
+        //     const Newform = shop.map(function(item, index){
+        //         return {
+        //             myID : index+1,
+        //             myName : item.name,
+        //             myCity : item.City,
+        //             myTel : item.Tel
+        //         };
+        //     });
+        //     console.log("舊資料:",shop);
+        //     console.log("新資料:",Newform);
+
+        //     //資料清洗 : 將資料格式、內容等統一
+        //     // shop.forEach(function(item){
+        //     //     console.log(item.Town.length);
+        //     // });此為資料錯誤導致無法輸出
+
+        //     const cleanShop = shop.map(function(item){
+        //         return{
+        //             Name : item.name,
+        //             City : item.City,
+        //             Tel : item.Tel,
+        //             // ?? : 右邊為要檢查的資料，左邊為結果為null或undefined時要更改的結果
+        //             //.trim() : 將資料始末2側的空白刪除
+        //             // || :右邊為要檢查的資料，左邊為結果任何虛值(0、""、false、NaN)時要更改的結果
+        //             Town : (item.Town ?? "").trim(),
+        //             Email : item.Email || "未提供"
+        //         }
+        //     });
+        //     console.log("乾淨資料:",cleanShop);
+        // });
+
+    //課堂練習
+        $(function () {
+            const hotel = [
+                {
+                    Name: "逢甲星光旅店",
+                    City: "臺中市",
+                    Town: "西屯區",
+                    Tel: "04-24512345",
+                    RoomType: "雙人房",
+                    Price: 2800,
+                    Email: "service@starlight.com"
+                },
+                {
+                    Name: "  草悟道漫步旅宿 ",
+                    City: "台中市",
+                    Town: "西區",
+                    Tel: "04-23019876",
+                    RoomType: " 豪華雙人房 ",
+                    Price: "3600",
+                    Email: null
+                },
+                {
+                    Name: "台中大飯店",
+                    City: "臺中市",
+                    Town: "",
+                    Tel: null,
+                    RoomType: "單人房",
+                    Price: 1800,
+                    Email: "contact@tchotel.com.tw"
+                },
+                {
+                    Name: " 綠川文旅",
+                    City: "台中市",
+                    Town: "中區",
+                    Tel: "04-22256677",
+                    RoomType: "四人房",
+                    Price: "5200",
+                    Email: undefined
+                },
+                {
+                    Name: "日月千禧酒店",
+                    City: "臺中市",
+                    Town: "西屯區",
+                    Tel: "04-37056000",
+                    RoomType: "行政客房",
+                    Price: 6500,
+                    Email: "millennium@millenniumtaichung.com"
+                },
+                {
+                    Name: "谷關溫泉會館  ",
+                    City: "台中市",
+                    Town: null,
+                    Tel: "04-25951122",
+                    RoomType: " 溫泉雙人房",
+                    Price: 4800,
+                    Email: "guguan@hotspring.com"
+                },
+                {
+                    Name: "一中時尚商旅",
+                    City: "臺中市",
+                    Town: "北區",
+                    Tel: undefined,
+                    RoomType: "標準房",
+                    Price: "2200",
+                    Email: "yizhong@fashioninn.com"
+                },
+                {
+                    Name: "  高美濕地海景民宿 ",
+                    City: "台中市",
+                    Town: "清水區",
+                    Tel: "04-26113344",
+                    RoomType: "海景四人房 ",
+                    Price: "4500",
+                    Email: "gaomei@seaview.tw"
+                },
+                {
+                    Name: "豐原客棧",
+                    City: "臺中市",
+                    Town: undefined,
+                    Tel: "04-25227788",
+                    RoomType: "雙人房",
+                    Price: 2000,
+                    Email: null
+                },
+                {
+                    Name: "長榮桂冠酒店",
+                    City: "臺中市",
+                    Town: "西屯區",
+                    Tel: "04-23139988",
+                    RoomType: "高級客房",
+                    Price: 4200,
+                    Email: "elhtcg@evergreen-hotels.com"
+                }
+            ]
+            const cleanHotel = hotel.map(function(item, index){
+                let c = item.City;
+                if(c == "台中市"){
+                    c = "臺中市";
+                }
+                let temp = (item.Town ?? "").trim(); 
+                return{
+                    id : index+1,
+                    Name : item.Name.trim(),
+                    //AI方法 : City: item.City === "台中市" ? "臺中市" : item.City,
+                    City : c,
+                    Town : temp || "行政區未提供",
+                    Tel : item.Tel ?? "未提供",
+                    RoomType : (item.RoomType ?? "").trim(),
+                    Price : Number(item.Price),
+                    Email : item.Email ?? "未提供",
+                };
+            });
+            console.log("清洗前:",hotel);
+            console.log("清洗後:",cleanHotel);
+        });
+    </script>
+</body>
+
+</html>

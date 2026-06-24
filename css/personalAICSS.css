@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Decol&display=swap');
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-500 {
+    font-weight: 500;
+}
+
+.fw-700 {
+    font-weight: 700;
+}
+
+:root {
+    /* ==========================================================================
+     1. 主體背景與全域基礎色 (Base & Backgrounds)
+     ========================================================================== */
+    --bg-main: #f7f8f6;
+    /* 全域大背景：象牙白/胡粉色，溫潤微偏冷 */
+    --bg-section-alt: #edf0f2;
+    /* 區塊交替背景：薄青灰，用於區隔不同主題區塊 */
+    --bg-card: #ffffff;
+    /* 卡片背景：純白 */
+
+    /* ==========================================================================
+     2. 文字顏色 (Typography)
+     ========================================================================== */
+    --text-primary: #2b333e;
+    /* 主要文字：墨黑/藍墨，比純黑更柔和、有深度 */
+    --text-secondary: #5c6b73;
+    /* 次要文字：消炭色/深灰藍 */
+    --text-muted: #93a1a1;
+    /* 提示文字：淺灰青 */
+
+    /* ==========================================================================
+     3. 品牌與強調色 (Brand & Accent Colors)
+     ========================================================================== */
+    --color-primary: #3a506b;
+    /* 主調色：縹色/藍染，用於主要標題，展現冷靜與專業 */
+    --color-secondary: #669bbc;
+    /* 次調色：水浅蔥/淺青，用於連結 */
+    --color-accent: #c1121f;
+    /* 強調/亮點色：緋紅/日之丸紅，極少點綴 */
+
+    /* ==========================================================================
+     4. 元件與邊框 (Components & Borders)
+     ========================================================================== */
+    --border-color: #d1dbdb;
+    /* 邊框色：水色灰 */
+    --list-dot: #93b5c6;
+    /* 列表項目符號：青磁色 */
+
+    /* ==========================================================================
+     5. 新增：語意化顏色變數 (新增優化項目)
+     ========================================================================== */
+    --text-on-btn: #ffffff;
+    /* 按鈕上的文字顏色：純白 */
+    --btn-hover-bg: #3a506b;
+    /* 按鈕懸停背景色：改為沉穩的主調縹色 */
+    --btn-shadow: rgba(102, 155, 188, 0.3);
+    /* 按鈕陰影：低飽和藍色透明柔影 */
+    --card-shadow: rgba(43, 51, 62, 0.06);
+    /* 卡片陰影：極淡墨黑柔影，營造日式空氣感 */
+    --user-text-bg: rgba(255, 255, 255, 0.75);
+    /* 名片文字背景：霧面半透明白，確保清晰度 */
+    --selection-bg: #e0e9ed;
+    /* 網頁文字被滑鼠選取時的背景色：冰藍色 */
+    --selection-text: #2b333e;
+    /* 網頁文字被滑鼠選取時的文字色 */
+}
+
+/* roller-t,b,l,r 分別由上下左右滑入 效果是輕模糊*/
+.roller-t {
+    position: relative;
+    /* 溢位(超出範圍)時隱藏 */
+    overflow: hidden;
+}
+
+.roller-t .roller_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 1. 調整背景色：建議降低不透明度（例如 0.2 或 0.3），後方圖片會更清晰 */
+    background-color: rgba(0, 255, 255, 0.25);
+    top: -100%;
+    /* 將roller_box的內容置中 */
+    display: flex;
+    align-items: center;
+    /*垂直置中*/
+    justify-content: center;
+    /*水平置中*/
+    transition: top 1s;
+
+    /* 2. 新增毛玻璃模糊效果（5px-8px 屬於輕微模糊） */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    /* 確保 Safari 瀏覽器相容性 */
+
+}
+
+.roller-t:hover .roller_box {
+    top: 0;
+}
+
+.roller-b {
+    position: relative;
+    /* 溢位(超出範圍)時隱藏 */
+    overflow: hidden;
+}
+
+.roller-b .roller_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 1. 調整背景色：建議降低不透明度（例如 0.2 或 0.3），後方圖片會更清晰 */
+    background-color: rgba(0, 255, 255, 0.25);
+    bottom: -100%;
+    /* 將roller_box的內容置中 */
+    display: flex;
+    align-items: center;
+    /*垂直置中*/
+    justify-content: center;
+    /*水平置中*/
+    transition: bottom 1s;
+
+    /* 2. 新增毛玻璃模糊效果（5px-8px 屬於輕微模糊） */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    /* 確保 Safari 瀏覽器相容性 */
+
+}
+
+.roller-b:hover .roller_box {
+    bottom: 0;
+}
+
+.roller-l {
+    position: relative;
+    /* 溢位(超出範圍)時隱藏 */
+    overflow: hidden;
+}
+
+.roller-l .roller_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 1. 調整背景色：建議降低不透明度（例如 0.2 或 0.3），後方圖片會更清晰 */
+    background-color: rgba(0, 255, 255, 0.25);
+    left: -100%;
+    /* 將roller_box的內容置中 */
+    display: flex;
+    align-items: center;
+    /*垂直置中*/
+    justify-content: center;
+    /*水平置中*/
+    transition: left 1s;
+
+    /* 2. 新增毛玻璃模糊效果（5px-8px 屬於輕微模糊） */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    /* 確保 Safari 瀏覽器相容性 */
+
+}
+
+.roller-l:hover .roller_box {
+    left: 0;
+}
+
+.roller-r {
+    position: relative;
+    /* 溢位(超出範圍)時隱藏 */
+    overflow: hidden;
+}
+
+.roller-r .roller_box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* 1. 調整背景色：建議降低不透明度（例如 0.2 或 0.3），後方圖片會更清晰 */
+    background-color: rgba(0, 255, 255, 0.25);
+    right: -100%;
+    /* 將roller_box的內容置中 */
+    display: flex;
+    align-items: center;
+    /*垂直置中*/
+    justify-content: center;
+    /*水平置中*/
+    transition: right 1s;
+
+    /* 2. 新增毛玻璃模糊效果（5px-8px 屬於輕微模糊） */
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    /* 確保 Safari 瀏覽器相容性 */
+
+}
+
+.roller-r:hover .roller_box {
+    right: 0;
+}
+
+.bg-cover{
+    background-position: center center;
+    background-size: cover;
+}

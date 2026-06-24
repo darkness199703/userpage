@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人首頁</title>
+    <link rel="stylesheet" href="../css/all.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: var(--bg-main);
+            font-family: "Kaisei Decol", serif;
+        }
+        /* s01:個人名片 */
+        .s01{
+            background-color: var(--bg-section-alt);
+            height: 100vh;
+            position: relative;
+        }
+        .s01 .box01{
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-primary);
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .s01 .box02{
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-primary);
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .s01 .box03{
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-primary);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .s01 .box04{
+            width: 200px;
+            height: 200px;
+            background-color: var(--color-primary);
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+        .s01 .userImg{
+            position: absolute;
+            top: 100px;
+            bottom: 100px;
+            left: 100px;
+            right: 100px;
+            background-color: var(--bg-card);
+            background-image: url(../images/fuji02.jpg);
+            background-position: center ;
+            background-size: cover;
+            border-radius: 20px;
+            box-shadow: 2px 2px 2px 2px var(--border-color);
+        }
+        .s01 .userText{
+            position: absolute;
+            top: 20%;
+            left: 10%;
+        }
+        /* s02:作品集 */
+        .s02{
+            padding: 80px 10%;
+            text-align: center;
+        }
+        .s02 .h2{
+            font-size: 36px;
+        }
+        .s02 .card{
+            width: 240px;
+            background-color: var(--bg-section-alt);
+            border-radius: 20px;
+            margin-top: 20px;
+            margin-right: 10px;
+            display: inline-block;
+            box-shadow: 2px 2px 2px 2px var(--bg-card);
+        }
+        .s02 .card h3{
+            padding-top: 5px;
+            color: var(--text-primary);
+        }
+        .s02 .card p{
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        .s02 .card a{
+            text-decoration: none;
+            display: inline-block;
+            background-color: var(--color-secondary);
+            border-radius: 10px;
+            margin: 15px;
+            padding: 10px;
+            box-shadow: 2px 2px 2px 2px var(--border-color);
+            transition: background-color 0.5s,box-shadow 0.5s;
+        }
+        .s02 .card a:hover{
+            background-color: var(--border-color);
+            box-shadow: 3px 3px 2px 2px var(--color-secondary);
+        }
+    </style>
+</head>
+<body>
+    <section class="s01">
+        <div class="box01"></div>
+        <div class="box02"></div>
+        <div class="box03"></div>
+        <div class="box04"></div>
+        <div class="userImg"></div>       
+        <div class="userText">
+            <h1>林廷輝 Tim</h1>
+            <hr>
+            <h2>座右銘:坐在也不小子熱門，一遍財政，簽名如同項。</h2>
+            <p></p>
+        </div>
+    </section>
+    <section class="s02">
+        <h2>我的作品</h2>
+        <!-- 作品01 -->
+         <div class="card">
+            <h3>切版練習</h3>
+            <p>使用html,css做切版練習</p>
+            <a href="../HTML/Practice1.html" target="_blank">查看作品(草稿)</a>
+            <a href="../HTML/Practice1-AI.html" target="_blank">查看作品(AI)</a>
+         </div>
+        <!-- 作品02 -->
+         <div class="card">
+            <h3>Table排版</h3>
+            <p>使用Bootstrap架構進行排版練習</p>
+            <a href="../BootStrap/20260605(table).html" target="_blank">查看作品(草稿)</a>
+            <a href="../BootStrap/20260605(table-AI).html" target="_blank">查看作品(AI)</a>
+         </div>
+        <!-- 作品03 -->
+         <div class="card">
+            <h3>JS資料庫編輯&渲染</h3>
+            <p>學習JS資料格式及code，並將JS渲染至table</p>
+            <a href="../BootStrap/20260609(dataJS).html" target="_blank">查看作品(JS資料庫)</a>
+            <a href="../BootStrap/20260609(tableWithData).html" target="_blank">查看作品(渲染ˇ表格)</a>
+         </div>
+        <!-- 作品04 -->
+         <div class="card">
+            <h3>代定</h3>
+            <p>無</p>
+            <a href=#>查看作品</a>
+         </div>
+    </section>
+</body>
+</html>

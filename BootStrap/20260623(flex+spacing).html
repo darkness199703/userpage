@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex、Spacing練習</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+    <style>
+        .box01{
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            font-size: 36px;
+            font-weight: 900;
+        }
+        .box02{
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 36px;
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="display-2 fw-700">1. flex-row水平(預設)</div>
+        <div class="row flex-row">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">2. flex-row-reverse翻轉</div>
+        <div class="row flex-xl-row-reverse">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">3. flex-colunm垂直</div>
+        <div class="row flex-column">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">4. flex-colunm-reverse垂直翻轉</div>
+        <div class="row flex-lg-column-reverse">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">5. justify-content-start靠左(預設)</div>
+        <div class="row justify-content-start">
+            <div class="col-3">
+                <div class="box01 bg-warning">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">6. justify-content-center置中</div>
+        <div class="row justify-content-center">
+            <div class="col-3">
+                <div class="box01 bg-warning">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">7. justify-content-end靠右</div>
+        <div class="row justify-content-end">
+            <div class="col-3">
+                <div class="box01 bg-warning">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">8. justify-content-around左右間隔</div>
+        <div class="row justify-content-around">
+            <div class="col-3">
+                <div class="box01 bg-warning">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">9. justify-content-between靠最右最左</div>
+        <div class="row justify-content-between">
+            <div class="col-3">
+                <div class="box01 bg-warning">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-warning">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">10. align-items-start垂直靠右</div>
+        <div class="row flex-column align-items-start">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">11. align-items-center垂直置中</div>
+        <div class="row flex-column align-items-center">
+            <div class="col-3">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">12. align-items-end垂直靠右</div>
+        <div class="row flex-column align-items-end">
+            <div class="col-3">
+                <div class="box01 bg-danger">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-danger">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">13. align-self-個別靠左(預設)中右</div>
+        <div class="row flex-column align-items-start">
+            <div class="col-3 align-self-start">
+                <div class="box01 bg-danger">01</div>
+            </div>
+            <div class="col-3 align-self-center">
+                <div class="box01 bg-danger">02</div>
+            </div>
+            <div class="col-3 align-self-end">
+                <div class="box01 bg-danger">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">14. order排序,自行決定物件順序可加斷點</div>
+        <div class="row flex-row">
+            <div class="col-2 order-0 order-md-5 order-lg-4">
+                <div class="box02 bg-secondary">01</div>
+            </div>
+            <div class="col-2 order-1 order-md-0 order-lg-5">
+                <div class="box02 bg-secondary">02</div>
+            </div>
+            <div class="col-2 order-2 order-md-1 order-lg-0">
+                <div class="box02 bg-secondary">03</div>
+            </div>
+            <div class="col-2 order-3 order-md-2 order-lg-1">
+                <div class="box02 bg-secondary">04</div>
+            </div>
+            <div class="col-2 order-4 order-md-3 order-lg-2">
+                <div class="box02 bg-secondary">05</div>
+            </div>
+            <div class="col-2 order-5 order-md-4 order-lg-3">
+                <div class="box02 bg-secondary">06</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">15. ms-auto左往右推移、me-auto右往左推移</div>
+        <div class="row flex-row">
+            <!-- 從第一個方塊左邊推，從第三個方塊右邊推>>卡在中間 -->
+            <div class="col-3 ms-auto">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3 me-auto">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-2 fw-700">16. mt-auto上往下推移、mb-auto下往上推移</div>
+        <div class="row flex-column" style="height: 100vh;">
+            <!-- 從第一個方塊下面推，從第三個方塊上面推>>第二個卡在中間 -->
+            <div class="col-3 mb-auto">
+                <div class="box01 bg-success">01</div>
+            </div>
+            <div class="col-3">
+                <div class="box01 bg-success">02</div>
+            </div>
+            <div class="col-3 mt-auto">
+                <div class="box01 bg-success">03</div>
+            </div>
+        </div>
+        <div class="display-5 fw-700">17. spacing(間隔)：margin(mt上、mb下、ms左、me右)、padding(pt、pb、ps、pe)</div>
+        <div class="bg-info mt-3">
+            <p class="bg-primary pt-1 ms-2 me-3">考察幫我遠遠看著環保飯店，共享版今天正常眼淚一起維修，造型兄弟傳說掌握婚姻您的傳統是我少年，緊急事故，商品讓他你怎不來硬體客戶消除原則返回，所謂說了希望官員其他的給予根本進步，環境房產解壓密碼身體視頻可以說迅速明顯，教材歐洲，走進用戶動力衝擊娛樂，放心簡。</p>
+            <p class="bg-primary mb-5 pt-2 pb-3 ps-4 pe-5">擴大部落下去介紹第二玩家心情，通信其他只好律師無奈大小反映通訊現在目錄，下降先後，不管無限遊客為什麼觀察尚未我在英語強大多年討論歐洲街道，那個特別，鈴聲一眼長大我一引進我只情緒，夥伴存款股市遠遠先進活動歡迎學校周邊家電黑暗，輕易容量是指臺灣職工球隊檢索全新，上午加大樣子飲食動作為你，成本年輕人一起二人投資者，同一部落格每個核心，博士產品海外二人看見近年來，公里計算留在，道德高度唯一附近算是工程部落上漲投票公司本網第二天，什麼事返回之下的人，小說說出驚人不得不電子郵件家裡物理個人在那裡大力尺寸，有個熱門上次打算一流剛才數碼，喜歡戀愛區別創業本地程度我現在風格概念評估特色很久，消失把我說法豐原現在房間感染此處文件如此可見，出席種類能夠電子商務各國效果他對好了資格，排行體系然後很熱理由控制空間不久成了暴力網頁班，性質作家部落格努力名字不錯基層，一人歡迎知名最終郵件到處秘密有一種尷尬還可以國內外處理都說，大廈表示左右避免文化是否，現有共享版，監督開發商今年渠道學習可以用家族次數反對創作文字最初，她說操作過去高級破解擴大成為屏幕上午英雄有可能模糊，資料庫第一唯一，建設有所售價，監控一人，任何社。</p>
+        </div>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
