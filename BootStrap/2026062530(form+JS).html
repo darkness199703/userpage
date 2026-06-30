@@ -22,7 +22,7 @@
                     <div class="invalid-feedback">不符規定，請重新輸入</div>
                 </div>
                 <div class="mb-3">
-                    <label for="pdnum" class="form-label">數量(1~999)</label>
+                    <label for="pdnum" class="form-label">數量(0~999)</label>
                     <input type="number" class="form-control form-control-lg" min="0" max="999" id="pdnum">
                     <div class="valid-feedback">確認輸入</div>
                     <div class="invalid-feedback">不符規定，請重新輸入</div>
@@ -112,7 +112,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // 宣告一個布林值，確認資料是否符合格式>>為真才送出
-        let flag , flag_pay= false;
+        let flag_name, flag_num, flag_info, flag_pk, flag_sp, flag_pay= false;
         $(function () {
             //監聽pdname：針對pdname這個物件，當他執行(on)input指令時觸法後續function{console.log($(this).val());}
             $("#pdname").on("input", function () {
@@ -123,12 +123,12 @@
                     //符合規定時
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
-                    flag = true;
+                    flag_name = true;
                 }
                 else {
                     $(this).removeClass("is-valid");
                     $(this).addClass("is-invalid");
-                    flag = false;
+                    flag_name = false;
                 }
             });
             // 監聽pdnum，先將值轉為數字Number()
@@ -138,12 +138,12 @@
                 if (pdnum >= 0 && pdnum <= 999) {
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
-                    flag = true;
+                    flag_num = true;
                 }
                 else {
                     $(this).removeClass("is-valid");
                     $(this).addClass("is-invalid");
-                    flag = false;
+                    flag_num = false;
                 }
             });
             $("#pdinfo").on("input", function () {
@@ -152,12 +152,12 @@
                 if (pdinfo.length > 0 && pdinfo.length <= 10) {
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
-                    flag = true;
+                    flag_info = true;
                 }
                 else {
                     $(this).removeClass("is-valid");
                     $(this).addClass("is-invalid");
-                    flag = false;
+                    flag_info = false;
                 }
             });
             $("#pdpackage").on("change", function () {
@@ -165,12 +165,12 @@
                 if (pdpackage != "請選擇") {
                     $(this).removeClass("is-invalid");
                     $(this).addClass("is-valid");
-                    flag = true;
+                    flag_pk = true;
                 }
                 else {
                     $(this).removeClass("is-valid");
                     $(this).addClass("is-invalid");
-                    flag = false;
+                    flag_pk = false;
                 }
             });
             $("#pdstatus").on("change", function () {
@@ -190,11 +190,11 @@
                 if(count > 0){
                     $("#store").removeClass("is-invalid");
                     $("#store").addClass("is-valid");
-                    flag = true;
+                    flag_sp = true;
                 }else{
                     $("#store").removeClass("is-valid");
                     $("#store").addClass("is-invalid");
-                    flag = false;
+                    flag_sp = false;
                 }
             });
             // 因為radio是單選，若不另外設旗子他不會進到function裡，flag會因為被前面的影響所以為true
@@ -208,12 +208,12 @@
                 }else{
                     $("#pdpay").removeClass("is-valid");
                     $("#pdpay").addClass("is-invalid");
-                    f1flag_pay = false;
+                    flag_pay = false;
                 }
             });
             //按鈕監聽
             $("#ok_btn").on("click", function () {
-                if (flag && flag_pay) {
+                if (flag_name && flag_num && flag_info && flag_pk && flag_sp && flag_pay) {
                     // 判斷商品為上架還是下架
                     let pdstatus = $("#pdstatus").prop("checked") ? "上架" : "下架";
                     // 蒐集checkbox的內容，用.push方式把內容放進陣列裡面
