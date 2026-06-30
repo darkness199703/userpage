@@ -112,6 +112,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         // 宣告一個布林值，確認資料是否符合格式>>為真才送出
+        // 若旗子不獨立各設一個，當使用者不點選(填入資料)不會觸發該function，容易導致flag因其他選項為true而為true
         let flag_name, flag_num, flag_info, flag_pk, flag_sp, flag_pay= false;
         $(function () {
             //監聽pdname：針對pdname這個物件，當他執行(on)input指令時觸法後續function{console.log($(this).val());}
@@ -197,7 +198,6 @@
                     flag_sp = false;
                 }
             });
-            // 因為radio是單選，若不另外設旗子他不會進到function裡，flag會因為被前面的影響所以為true
             $(".pay").on("change",function(){
                 let pay = $(".pay:checked").val();
 

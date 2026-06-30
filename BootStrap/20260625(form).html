@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單製作</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+</head>
+
+<body>
+    <div class="container py-5">
+        <div class="display-2 fw-700 my-3">1.基本表單</div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="" class="form-label">產品名稱</label>
+                    <!-- type：接受的格式 placeholder：提醒字 -->
+                    <input type="text" class="form-control form-control-lg is-valid" placeholder="請輸入產品名稱">
+                    <!-- is-valid觸發valid-feedback、is-invalid觸發invalid-feedback ，可即時回饋使用者格式是否正確-->
+                    <div class="valid-feedback">名稱符合規格</div>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">產品數量</label>
+                    <!-- 若數字形式可設定min、max可用點擊方式增減的最大最小值 value：預設值 -->
+                    <input type="number" class="form-control form-control-lg is-invalid" min="0" max="999" value="0"
+                        placeholder="0~999">
+                    <div class="invalid-feedback">數量超過最大值999</div>
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">檔案</label>
+                    <input type="file" class="form-control form-control-lg">
+                </div>
+                <div class="mb-3">
+                    <label for="" class="form-label">檔案(因為加了disabled所以無法使用)</label>
+                    <input type="file" class="form-control form-control-lg" disabled>
+                </div>
+            </div>
+        </div>
+        
+        <div class="display-2 fw-700 my-3">2.DataList</div>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <label for="" class="form-label">產品名稱</label>
+                    <input type="text" class="form-control form-control-lg" placeholder="請輸入產品名稱" list="detalistoption">
+                </div>
+                <!-- 建議選項 -->
+                <datalist id="detalistoption">
+                    <option value="蘋果"></option>
+                    <option value="芒果"></option>
+                    <option value="西瓜"></option>
+                </datalist>
+            </div>
+        </div>
+        <!-- 下拉式選單 -->
+        <div class="display-2 fw-700 my-3">3.Select</div>
+        <div class="row">
+            <div class="col-12">
+                <select name="" id="" class="form-select form-select-lg is-invalid">
+                    <option value="disabled selected">請選擇商品</option>
+                    <option value="蘋果">蘋果</option>
+                    <option value="芒果">芒果</option>
+                    <option value="西瓜">西瓜</option>
+                    <option value="荔枝">荔枝</option>
+                </select>
+                <div class="valid-feedback">已選擇</div>
+                <div class="invalid-feedback">請選擇商品</div>
+            </div>
+        </div>
+        <!-- 0/1切換 -->
+        <div class="display-2 fw-700 my-3">4.Switch</div>
+        <div class="row">
+            <div class="col-12 mb-3">
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input is-invalid">
+                    <label for="">同意/不同意</label>
+                    <div class="invalid-feedback">不同意無法送出</div>
+                </div>
+            </div>
+            <div class="col-12 mb-3">
+                <div class="mb-3 form-check form-switch">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="">同意/不同意</label>
+                </div>
+            </div>
+        </div>
+        <!-- 勾選選項(複選) -->
+        <div class="display-2 fw-700 my-3">5.checkbox</div>
+        <div class="row">
+            <div class="col-12 is-invalid">
+                <div class="mb-2 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="" class="form-check-label">選項1</label>
+                </div>
+                <div class="mb-2 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="" class="form-check-label">選項2</label>
+                </div>
+                <div class="mb-2 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="" class="form-check-label">選項3</label>
+                </div>
+                <div class="mb-2 form-check form-check-inline">
+                    <input type="checkbox" class="form-check-input">
+                    <label for="" class="form-check-label">選項4</label>
+                </div>                
+            </div>
+            <div class="invalid-feedback">至少選擇一項</div>
+        </div>
+        <!-- 勾選選項(單選) -->
+        <div class="display-2 fw-700 my-3">6.radio</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-2 form-check">
+                    <input type="radio" class="form-check-input" name="radio001">
+                    <label for="" class="form-check-label">選項1</label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="radio" class="form-check-input" name="radio001">
+                    <label for="" class="form-check-label">選項2</label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="radio" class="form-check-input" name="radio001">
+                    <label for="" class="form-check-label">選項3</label>
+                </div>
+                <div class="mb-2 form-check">
+                    <input type="radio" class="form-check-input" name="radio001">
+                    <label for="" class="form-check-label">選項4</label>
+                </div>
+            </div>
+        </div>
+        <!-- 將內容標整合在input格裡 -->
+        <div class="display-2 fw-700 my-3">7.input group</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">帳號</span>
+                    <input type="text" class="form-control" placeholder="請輸入帳號">
+                </div>
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">電子信箱</span>
+                    <input type="email" class="form-control" placeholder="請輸入gmail帳號">
+                    <span class="input-group-text">@gmail.com</span>
+                </div>
+                <div class="mb-3 input-group">
+                    <input type="text" class="form-control" placeholder="請輸入關鍵字搜尋">
+                    <button class="btn btn-primary">搜尋</button>
+                </div>
+            </div>
+        </div>
+        <!-- 浮動標題 要搭配空白placeholder，若ph有內容也不會顯示，但若沒有ph會沒有動畫效果-->
+        <div class="display-2 fw-700 my-3">8.floating label</div>
+        <div class="row">
+            <div class="col-12">
+                <div class="mb-3 form-floating">
+                    <input type="text" class="form-control" placeholder="">
+                    <label for="" class="form-label">帳號</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
