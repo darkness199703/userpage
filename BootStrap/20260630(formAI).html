@@ -4,109 +4,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>表單練習+JS</title>
+    <title>表單練習+JS(AI)</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/personalAICSS.css">
 </head>
 
 <body class="bg-light">
     <div class="container pt-5">
-        <div class="display-4 fw-700 text-center text-bg-primary py-2 mb-4">產品建檔</div>
-        <!-- 表單 -->
-        <div class="row justify-content-center">
-            <div class="col-md-6">
-                <div class="mb-3 form-floating">
-                    <input type="text" class="form-control form-control-lg" name="" id="pdname" placeholder="">
-                    <label for="pdname" class="form-label">產品名稱(字數1~10)</label>
-                    <div class="valid-feedback">確認輸入</div>
-                    <div class="invalid-feedback">不符規定，請重新輸入</div>
-                </div>
-                <div class="mb-3">
-                    <label for="pdnum" class="form-label">數量(0~999)</label>
-                    <input type="number" class="form-control form-control-lg" min="0" max="999" id="pdnum">
-                    <div class="valid-feedback">確認輸入</div>
-                    <div class="invalid-feedback">不符規定，請重新輸入</div>
-                </div>
-                <div class="mb-3">
-                    <label for="pdinfo" class="form-label">保存方式</label>
-                    <input type="text" class="form-control form-control-lg is-invalid" placeholder="請輸入保存方式(10字以內)"
-                        list="detalistoption" id="pdinfo">
-                    <div class="valid-feedback">確認輸入</div>
-                    <div class="invalid-feedback">不符規定，請重新輸入</div>
-                </div>
-                <datalist id="detalistoption">
-                    <option value="室溫"></option>
-                    <option value="冷藏"></option>
-                    <option value="冷凍"></option>
-                </datalist>
-                <div class="mb-3">
-                    <label for="pdpackage" class="form-label">包裝方式</label>
-                    <select name="" id="pdpackage" class="form-control form-control-lg is-invalid">
-                        <option value="請選擇">請選擇</option>
-                        <option value="散裝">散裝</option>
-                        <option value="盒裝">盒裝</option>
-                        <option value="禮盒">禮盒</option>
-                        <option value="箱裝">箱裝</option>
-                    </select>
-                    <div class="valid-feedback">已選擇</div>
-                    <div class="invalid-feedback">請選擇</div>
-                </div>
-                <div class="mb-3 form-check form-switch">
-                    <input type="checkbox" name="" id="pdstatus" class="form-check-input" unchecked>
-                    <label for="" class="form-check-label" id="pdstatus_text">目前狀態: 下架</label>
-                </div>
-                <div class="mb-3">
-                    <div class="form-label fw-700">販賣位置(至少選擇一個)</div>
-                    <div id="store" class="is-invalid">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input store_place" value="零售">
-                            <label for="" class="form-check-label">零售</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input store_place" value="批發">
-                            <label for="" class="form-check-label">批發</label>
-                        </div>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input store_place" value="外銷">
-                            <label for="" class="form-check-label">外銷</label>
-                        </div>
-                    </div>
-                    <div class="valid-feedback">已選擇</div>
-                    <div class="invalid-feedback">至少選擇一個</div>
-                </div>
-                <div class="mb-3">
-                    <div class="form-label fw-700">付款方式(至少選擇一個)</div>
-                    <div class="is-invalid" id="pdpay">
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input pay" name="pay_mythod" value="現金">
-                            <label for="" class="form-check-label">現金</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input pay" name="pay_mythod" value="轉帳">
-                            <label for="" class="form-check-label">轉帳</label>
-                        </div>
-                    </div>
-                    <div class="valid-feedback">已選擇</div>
-                    <div class="invalid-feedback">至少選擇一個</div>
-                </div>
-                <div class="text-end mt-4">
-                    <button class="btn btn-primary" id="ok_btn">確認</button>
-                    <button class="btn btn-secondary" id="cansol_btn">取消</button>
-                </div>
+    <div class="display-4 fw-700 text-center text-bg-primary py-2 mb-4 rounded-3">產品建檔</div>
+    <!-- 表單 -->
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <!-- 修正：form-floating 必須搭配非空值的 placeholder，動畫才會正常運作 -->
+            <div class="mb-3 form-floating">
+                <input type="text" class="form-control form-control-lg" name="" id="pdname" placeholder="產品名稱">
+                <label for="pdname" class="form-label">產品名稱(字數1~10)</label>
+                <div class="valid-feedback">確認輸入</div>
+                <div class="invalid-feedback">不符規定，請重新輸入</div>
             </div>
-        </div>
-        <!-- 建檔明細 -->
-        <div class="row mt-5 justify-content-center d-none" id="detale">
-            <div class="display-5 fw-700 text-center text-bg-secondary py-2 rounded-3">產品建檔-明細</div>
-            <div class="col-md-6 p-3">
-                <div id="showmessage"></div>
+            <div class="mb-3">
+                <label for="pdnum" class="form-label">數量(0~999)</label>
+                <input type="number" class="form-control form-control-lg" min="0" max="999" id="pdnum">
+                <div class="valid-feedback">確認輸入</div>
+                <div class="invalid-feedback">不符規定，請重新輸入</div>
+            </div>
+            <!-- 修正：移除初始化即寫死的 is-invalid，避免未填寫就顯示紅字 -->
+            <div class="mb-3">
+                <label for="pdinfo" class="form-label">保存方式</label>
+                <input type="text" class="form-control form-control-lg" placeholder="請輸入保存方式(10字以內)"
+                    list="detalistoption" id="pdinfo">
+                <div class="valid-feedback">確認輸入</div>
+                <div class="invalid-feedback">不符規定，請重新輸入</div>
+            </div>
+            <datalist id="detalistoption">
+                <option value="室溫"></option>
+                <option value="冷藏"></option>
+                <option value="冷凍"></option>
+            </datalist>
+            <!-- 修正：移除初始化即寫死的 is-invalid -->
+            <div class="mb-3">
+                <label for="pdpackage" class="form-label">包裝方式</label>
+                <select name="" id="pdpackage" class="form-control form-control-lg">
+                    <option value="請選擇">請選擇</option>
+                    <option value="散裝">散裝</option>
+                    <option value="盒裝">盒裝</option>
+                    <option value="禮盒">禮盒</option>
+                    <option value="箱裝">箱裝</option>
+                </select>
+                <div class="valid-feedback">已選擇</div>
+                <div class="invalid-feedback">請選擇</div>
+            </div>
+            <!-- 修正：補上 label 的 for 屬性對應 input，並移除不合規範的 unchecked 屬性 -->
+            <div class="mb-3 form-check form-switch">
+                <input type="checkbox" name="" id="pdstatus" class="form-check-input">
+                <label for="pdstatus" class="form-check-label" id="pdstatus_text">目前狀態: 下架</label>
+            </div>
+            <!-- 修正：移除 id 的 is-invalid 並加入 position-relative 以利結構內驗證文字對齊 -->
+            <div class="mb-3 position-relative">
+                <div class="form-label fw-700">販賣位置(至少選擇一個)</div>
+                <div id="store">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input store_place" value="零售" id="store_retail">
+                        <label for="store_retail" class="form-check-label">零售</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input store_place" value="批發" id="store_wholesale">
+                        <label for="store_wholesale" class="form-check-label">批發</label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input store_place" value="外銷" id="store_export">
+                        <label for="store_export" class="form-check-label">外銷</label>
+                    </div>
+                </div>
+                <div class="valid-feedback">已選擇</div>
+                <div class="invalid-feedback">至少選擇一個</div>
+            </div>
+            <!-- 修正：將 mb3 改為 mb-3，移除內層 is-invalid 並加入 position-relative -->
+            <div class="mb-3 position-relative">
+                <div class="form-label fw-700">付款方式(至少選擇一個)</div>
+                <div id="pdpay">
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input pay" name="pay_mythod" value="現金" id="pay_cash">
+                        <label for="pay_cash" class="form-check-label">現金</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input pay" name="pay_mythod" value="轉帳" id="pay_transfer">
+                        <label for="pay_transfer" class="form-check-label">轉帳</label>
+                    </div>
+                </div>
+                <div class="valid-feedback">已選擇</div>
+                <div class="invalid-feedback">至少選擇一個</div>
             </div>
             <div class="text-end mt-4">
-                <button class="btn btn-info">確認送出</button>
-                <button class="btn btn-secondary">取消</button>
+                <button class="btn btn-primary" id="ok_btn">確認</button>
+                <button class="btn btn-secondary" id="cansol_btn">取消</button>
             </div>
         </div>
     </div>
+    <!-- 建檔明細 -->
+    <div class="row mt-5 justify-content-center d-none" id="detale">
+        <div class="display-5 fw-700 text-center text-bg-secondary py-2 rounded-3">產品建檔-明細</div>
+        <div class="col-md-6 p-3">
+            <!-- 修正：為明細內容外層框增加基礎 Bootstrap 邊框與陰影樣式 -->
+            <div id="showmessage" class="border p-3 rounded bg-white shadow-sm"></div>
+        </div>
+        <div class="text-end mt-4">
+            <!-- 修正：info 按鈕文字預設較淺，補上 text-white 提高對比度 -->
+            <button class="btn btn-info text-white">確認送出</button>
+            <button class="btn btn-secondary">取消</button>
+        </div>
+    </div>
+</div>
+
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-4.0.0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
