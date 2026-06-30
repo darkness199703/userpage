@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表單練習+JS</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/personalAICSS.css">
+</head>
+
+<body class="bg-light">
+    <div class="container pt-5">
+        <div class="display-4 fw-700 text-center text-bg-primary py-2 mb-4">產品建檔</div>
+        <!-- 表單 -->
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="mb-3 form-floating">
+                    <input type="text" class="form-control form-control-lg" name="" id="pdname" placeholder="">
+                    <label for="pdname" class="form-label">產品名稱(字數1~10)</label>
+                    <div class="valid-feedback">確認輸入</div>
+                    <div class="invalid-feedback">不符規定，請重新輸入</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pdnum" class="form-label">數量(1~999)</label>
+                    <input type="number" class="form-control form-control-lg" min="0" max="999" id="pdnum">
+                    <div class="valid-feedback">確認輸入</div>
+                    <div class="invalid-feedback">不符規定，請重新輸入</div>
+                </div>
+                <div class="mb-3">
+                    <label for="pdinfo" class="form-label">保存方式</label>
+                    <input type="text" class="form-control form-control-lg is-invalid" placeholder="請輸入保存方式(10字以內)"
+                        list="detalistoption" id="pdinfo">
+                    <div class="valid-feedback">確認輸入</div>
+                    <div class="invalid-feedback">不符規定，請重新輸入</div>
+                </div>
+                <datalist id="detalistoption">
+                    <option value="室溫"></option>
+                    <option value="冷藏"></option>
+                    <option value="冷凍"></option>
+                </datalist>
+                <div class="mb-3">
+                    <label for="pdpackage" class="form-label">包裝方式</label>
+                    <select name="" id="pdpackage" class="form-control form-control-lg is-invalid">
+                        <option value="請選擇">請選擇</option>
+                        <option value="散裝">散裝</option>
+                        <option value="盒裝">盒裝</option>
+                        <option value="禮盒">禮盒</option>
+                        <option value="箱裝">箱裝</option>
+                    </select>
+                    <div class="valid-feedback">已選擇</div>
+                    <div class="invalid-feedback">請選擇</div>
+                </div>
+                <div class="mb-3 form-check form-switch">
+                    <input type="checkbox" name="" id="pdstatus" class="form-check-input" unchecked>
+                    <label for="" class="form-check-label" id="pdstatus_text">目前狀態: 下架</label>
+                </div>
+                <div class="mb-3">
+                    <div class="form-label fw-700">販賣位置(至少選擇一個)</div>
+                    <div id="store" class="is-invalid">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input store_place" value="零售">
+                            <label for="" class="form-check-label">零售</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input store_place" value="批發">
+                            <label for="" class="form-check-label">批發</label>
+                        </div>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input store_place" value="外銷">
+                            <label for="" class="form-check-label">外銷</label>
+                        </div>
+                    </div>
+                    <div class="valid-feedback">已選擇</div>
+                    <div class="invalid-feedback">至少選擇一個</div>
+                </div>
+                <div class="mb3">
+                    <div class="form-label fw-700">付款方式(至少選擇一個)</div>
+                    <div class="is-invalid" id="pdpay">
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input pay" name="pay_mythod" value="現金">
+                            <label for="" class="form-check-label">現金</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input pay" name="pay_mythod" value="轉帳">
+                            <label for="" class="form-check-label">轉帳</label>
+                        </div>
+                    </div>
+                    <div class="valid-feedback">已選擇</div>
+                    <div class="invalid-feedback">至少選擇一個</div>
+                </div>
+                <div class="text-end mt-4">
+                    <button class="btn btn-primary" id="ok_btn">確認</button>
+                    <button class="btn btn-secondary" id="cansol_btn">取消</button>
+                </div>
+            </div>
+        </div>
+        <!-- 建檔明細 -->
+        <div class="row mt-5 justify-content-center d-none" id="detale">
+            <div class="display-5 fw-700 text-center text-bg-secondary py-2 rounded-3">產品建檔-明細</div>
+            <div class="col-md-6 p-3">
+                <div id="showmessage"></div>
+            </div>
+            <div class="text-end mt-4">
+                <button class="btn btn-info">確認送出</button>
+                <button class="btn btn-secondary">取消</button>
+            </div>
+        </div>
+    </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-4.0.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        // 宣告一個布林值，確認資料是否符合格式>>為真才送出
+        let flag , flag_pay= false;
+        $(function () {
+            //監聽pdname：針對pdname這個物件，當他執行(on)input指令時觸法後續function{console.log($(this).val());}
+            $("#pdname").on("input", function () {
+                // 先宣告一個變數，用來把空白鍵篩選掉
+                let pdname = $(this).val().trim();
+                // 再判斷變數長度(無空白)
+                if (pdname.length >= 1 && pdname.length <= 10) {
+                    //符合規定時
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag = true;
+                }
+                else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag = false;
+                }
+            });
+            // 監聽pdnum，先將值轉為數字Number()
+            $("#pdnum").on("input", function () {
+                let pdnum = Number($(this).val());
+
+                if (pdnum >= 0 && pdnum <= 999) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag = true;
+                }
+                else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag = false;
+                }
+            });
+            $("#pdinfo").on("input", function () {
+                let pdinfo = $(this).val().trim();
+
+                if (pdinfo.length > 0 && pdinfo.length <= 10) {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag = true;
+                }
+                else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag = false;
+                }
+            });
+            $("#pdpackage").on("change", function () {
+                let pdpackage = $(this).val().trim();
+                if (pdpackage != "請選擇") {
+                    $(this).removeClass("is-invalid");
+                    $(this).addClass("is-valid");
+                    flag = true;
+                }
+                else {
+                    $(this).removeClass("is-valid");
+                    $(this).addClass("is-invalid");
+                    flag = false;
+                }
+            });
+            $("#pdstatus").on("change", function () {
+                let pdstatus = $(this).prop("checked");
+                // 偵測目前switch得狀態為真實顯示"上架"反之顯示"下架"
+                if (pdstatus) {
+                    $("#pdstatus_text").text("目前狀態: 上架");
+                } else {
+                    $("#pdstatus_text").text("目前狀態: 下架");
+                }
+            });
+            // 監聽class要用.
+            $(".store_place").on("change",function(){
+                // 計算已經打勾的數量
+                let count = $(".store_place:checked").length
+
+                if(count > 0){
+                    $("#store").removeClass("is-invalid");
+                    $("#store").addClass("is-valid");
+                    flag = true;
+                }else{
+                    $("#store").removeClass("is-valid");
+                    $("#store").addClass("is-invalid");
+                    flag = false;
+                }
+            });
+            // 因為radio是單選，若不另外設旗子他不會進到function裡，flag會因為被前面的影響所以為true
+            $(".pay").on("change",function(){
+                let pay = $(".pay:checked").val();
+
+                if(pay != undefined){
+                    $("#pdpay").removeClass("is-invalid");
+                    $("#pdpay").addClass("is-valid");
+                    flag_pay = true;
+                }else{
+                    $("#pdpay").removeClass("is-valid");
+                    $("#pdpay").addClass("is-invalid");
+                    f1flag_pay = false;
+                }
+            });
+            //按鈕監聽
+            $("#ok_btn").on("click", function () {
+                if (flag && flag_pay) {
+                    // 判斷商品為上架還是下架
+                    let pdstatus = $("#pdstatus").prop("checked") ? "上架" : "下架";
+                    // 蒐集checkbox的內容，用.push方式把內容放進陣列裡面
+                    let place = [];
+                    $(".store_place:checked").each(function(){
+                        place.push($(this).val());
+                    });
+                    //提取radio的value
+                    let pay = $(".pay:checked").val();
+                    // 陣列要用.join()方式印出，()內可填項目跟項目之間要輸出的內容
+                    let strHTML = `
+                                    <h3>產品名稱: ${$("#pdname").val()}</h3>
+                                    <h3>產品數量: ${Number($("#pdnum").val())}</h3>
+                                    <h3>保存方式: ${$("#pdinfo").val()}</h3>
+                                    <h3>包裝方式: ${$("#pdpackage").val()}</h3>
+                                    <h3>目前狀態: ${pdstatus}</h3>
+                                    <h3>販售地點: ${place.join("、")}</h3>
+                                    <h3>付款方式: ${pay}</h3>
+                                `;
+                    $("#showmessage").html(strHTML);
+                    $('#detale').removeClass("d-none");
+                    $('#detale').addClass("d-block");
+                }
+                else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "逼逼...",
+                        text: "資料格式錯誤",
+                    });
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
