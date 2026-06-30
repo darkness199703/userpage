@@ -8,13 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- 建議引入 Bootstrap Icons 用於地址與電話圖示（選填） -->
-    <link rel="stylesheet" href="https://jsdelivr.net">
     <link rel="stylesheet" href="../css/personalAICSS.css">
 
     <style>
         .header {
             height: 160px;
-            background-image: url(/images/aoiike.jpg);
+            background-image: url(../images/aoiike.jpg);
             background-position: center;
             background-size: cover;
         }
@@ -139,9 +138,9 @@
                 <div class="storCard card h-100 overflow-hidden">
                     <div class="card-img-wrap roller-t">
                         <div class="roller_box">
-                            <a href="https://example.com" class="btn btn-light px-4 py-2 fw-bold">查看詳情</a>
+                            <a href="#" class="btn btn-light px-4 py-2 fw-bold">查看詳情</a>
                         </div>
-                        <img src="/images/furano01.jpg" alt="旅遊景點001">
+                        <img src="../images/furano01.jpg" alt="旅遊景點001">
                     </div>
                     <div class="card-body d-flex flex-column p-4">
                         <h3 class="card-title h4 text-center mb-3">旅遊景點001</h3>
@@ -167,7 +166,7 @@
         $(function () {
             $.ajax({
                 type: "GET",
-                url: "http://localhost:3000/travelFood",
+                url: "https://data.moa.gov.tw/Service/OpenData/ODwsv/ODwsvTravelFood.aspx?IsTransData=1&UnitId=193",
                 dataType: "json",
                 success: function (data) {
                     // console.log(data);
